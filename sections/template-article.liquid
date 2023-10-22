@@ -1,0 +1,32 @@
+<h1>{{ article.title }}</h1>
+{% if section.settings.author_enable %}
+    <small>{{ article.author}}</small>
+{% endif %}
+{% if section.settings.published_time_enable %}
+    <time datetime="{{ article.published_at | date: '%d-%m-%Y' }}">{{ article.published_at | date: '%d-%m-%Y' }}</time>
+{% endif %}
+
+
+<img width="{{ article.image.width }}" height="{{ article.image.height }}" src="{{ article.image |  image_url: width: 1000 }}" alt="{{ article.image.alt }}">
+<div>{{ article.content }}</div>
+
+
+{% schema %}
+{
+    "name": "Template Article",
+    "settings": [
+        {
+            "type": "checkbox",
+            "id": "author_enable",
+            "label": "Display Author Name",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "published_time_enable",
+            "label": "Display Published Time",
+            "default": true
+        }
+    ]
+}
+{% endschema %}
