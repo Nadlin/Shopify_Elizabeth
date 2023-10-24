@@ -1,0 +1,17 @@
+<div class="px-4 py-8">
+    {% paginate collection.products by 8 %} 
+        <h1 class="text-3xl text-center mb-10">{{ collection.title }}</h1>
+        <script>console.log({{ product | json }})</script>
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                {% for product in collection.products %}
+                    {% render 'product-card', product: product %}
+                {% else %}
+                    <p>There are no products inside of this collection</p>      
+                {% endfor %}
+            </div>
+        </div>
+        <!--{{ paginate | default_pagination }}-->
+        {% render 'pagination', pagination: paginate %}
+    {% endpaginate %} 
+</div>
