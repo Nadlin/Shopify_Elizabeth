@@ -1,9 +1,10 @@
 <div class="px-4 py-8">
-    {% paginate collection.products by 8 %} 
+    <a href="{{ routes.collections_url }}" class="text-base text-gray-500 hover:underline text-center block">Go back to collections</a>
+    {% paginate collection.products by section.settings.products_per_page %} 
         <h1 class="text-3xl text-center mb-10">{{ collection.title }}</h1>
         <script>console.log({{ product | json }})</script>
         <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {% for product in collection.products %}
                     {% render 'product-card', product: product %}
                 {% else %}
@@ -15,3 +16,20 @@
         {% render 'pagination', pagination: paginate %}
     {% endpaginate %} 
 </div>
+
+{% schema %}
+{
+    "name": "Template Collection",
+    "settings": [
+        {
+            "type": "range",
+            "id": "products_per_page",
+            "default": 6,
+            "label": "Products per page",
+            "min": 3,
+            "max": 30,
+            "step": 1
+        }
+    ]
+}
+{% endschema %}

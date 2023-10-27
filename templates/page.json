@@ -1,0 +1,19 @@
+{
+  "sections": {
+    "template": {
+      "type": "template-page",
+      "settings": {
+      }
+    },
+    "17495b65-50c9-4006-ab65-63f54b6a52a6": {
+      "type": "contact-form",
+      "settings": {
+        "contact_form_title": "Contact Us"
+      }
+    }
+  },
+  "order": [
+    "template",
+    "17495b65-50c9-4006-ab65-63f54b6a52a6"
+  ]
+}
