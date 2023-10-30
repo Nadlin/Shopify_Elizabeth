@@ -57,13 +57,13 @@ console.log({{ product.selected_or_first_available_variant | json }})
             </div>
         </div>
         <div class="product--information top-5 p-2 sticky">
-            {% form 'product', product %}
+            {% form "product", product, id: 'product-form', novalidate: 'novalidate' %}
                 <input type="hidden" name="id" value="{{ selected_variant.id }}">
                 <div class="my-3">
                     <span class="text-xs text-gray-500">{{ product.vendor }}</span>
                 </div>
                 <div class="my-3"><h1 class="text-3xl text-gray-900">{{ product.title }}</h1></div>
-                <div class="my-3">
+                <div class="my-3" id="price-{{ section.id }}">
                     
                         <span class="text-base text-gray-500 line-through">{{ selected_variant.compare_at_price | money }}</span>
                         <span class="text-lg text-gray-900">{{ selected_variant.price | money }}</span>
@@ -89,6 +89,9 @@ console.log({{ product.selected_or_first_available_variant | json }})
                                             </select>
                                         </div>                  
                                     {% endfor %}
+                                    <script type="application/json">
+                                        {{ product.variants | json }}
+                                    </script>
                                 </variant-selector>
                             {% endunless %}
                         </div>
@@ -126,10 +129,66 @@ console.log({{ product.selected_or_first_available_variant | json }})
         }
 
         onVariantChange() {
-            console.log('changed');
+            this.getSelectedOptions();
+            this.getCurrentVariant();
+            if (this.currentVariant) {
+                this.updateURL();
+                this.updateFormID();
+                this.updatePrice();
+            }
+        }
+
+        getSelectedOptions() {
             this.options = Array.from(this.querySelectorAll('select'), (select) => select.value);
             console.log(this.options);
         }
+
+        getVariantJSON() {
+            this.variantData = this.variantData || JSON.parse(this.querySelector('[type="application/json"]').textContent);
+            return this.variantData;
+        }
+
+        getCurrentVariant() {
+            this.currentVariant = this.getVariantJSON().find(
+                (variant) => {
+                const finding = !variant.options.map(
+                    (option, index) => {
+                        return this.options[index] == option
+                }).includes(false);
+
+                /*const finding = variant.options.map(
+                    (option, index) => {
+                        return this.options[index] == option
+                });*/
+
+                if (finding) return variant;
+
+            })
+        }
+
+        updateURL() {
+            if (!this.currentVariant) return;
+            window.history.replaceState({}, '', `${this.dataset.url}?variant=${this.currentVariant.id}`);
+        }
+
+        updateFormID() {
+            const form_input = document.querySelector('#product-form').querySelector('[name="id"]');
+            form_input.value = this.currentVariant.id;
+        }
+
+        updatePrice() {
+            fetch(`${this.dataset.url}?variant=${this.currentVariant.id}&section_id=${this.dataset.section}`)
+            .then((response) => response.text())
+            .then((responseText) => {
+                const id = `price-${this.dataset.section}`;
+                const html = new DOMParser().parseFromString(responseText, 'text/html');
+                const old_price= document.getElementById(id);
+                const new_price = html.getElementById(id);
+
+                if (old_price && new_price) old_price.innerHTML = new_price.innerHTML;
+            })
+        }
+
     }
     customElements.define('variant-selector', VariantSelector);
 </script>
