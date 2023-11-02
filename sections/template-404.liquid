@@ -18,35 +18,35 @@
 
 {% schema %}
 {
-    "name": "Template 404",
-    "tag": "section",
-    "class": "flex items-center justify-center text-center py-7 h-screen",
-    "settings": [
-            {
-                "type": "text",
-                "id": "title",
-                "label": "Title for 404 page",
-                "default": "404 Page",
-                "info": "Here you can change the title for 404 page"
-            }, 
-            {
-                "type": "liquid",
-                "id": "content",
-                "label": "Content for 404 page",
-                "default": "{{ 'general.404.subtext_html' | t }}",
-                "info": "Here you can change content for 404 page"
-            },
-            {
-                "type": "text",
-                "id": "button",
-                "label": "Button label",
-                "default": "Back to Home page"
-            },
-            {
-                "type": "url",
-                "id": "button_url",
-                "label": "Button URL"
-            }
-        ]
+  "name": "Template 404",
+  "tag": "section",
+  "class": "flex items-center justify-center text-center py-7 h-screen",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title for 404 page",
+      "default": "404 Page",
+      "info": "Here you can change the title for 404 page"
+    },
+    {
+      "type": "liquid",
+      "id": "content",
+      "label": "Content for 404 page",
+      "default": "{{ 'general.404.subtext_html' | t }}",
+      "info": "Here you can change content for 404 page"
+    },
+    {
+      "type": "text",
+      "id": "button",
+      "label": "Button label",
+      "default": "Back to Home page"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    }
+  ]
 }
 {% endschema %}

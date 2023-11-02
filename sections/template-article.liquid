@@ -27,10 +27,10 @@
             {% when "article_img" %}
                 <div itemprop="image" class="max-w-7xl bg-blue-100 rounded-lg mx-2 md:mx-auto overflow-hidden my-4">
                     {% if article.image != blank %}
-                        <img class="w-full h-80 md:h-96 object-cover object-center" width="{{ article.image.width }}" height="{{ article.image.height }}" src="{{ article.image |  image_url: width: 1000 }}" alt="{{ article.image.alt }}">
+                        <img class="w-full h-80 md:h-96 object-cover object-center" width="{{ article.image.width }}" height="{{ article.image.height }}" src="{{ article.image | image_url: width: 1000 }}" alt="{{ article.image.alt }}">
                     {% else %}
                         {% assign placeholder_image = 'lifestyle-2' %}
-                        {{ placeholder_image |  placeholder_svg_tag: 'w-full h-80 md:h-96 object-cover object-center p-5' }}
+                        {{ placeholder_image | placeholder_svg_tag: 'w-full h-80 md:h-96 object-cover object-center p-5' }}
                     {% endif %}
                 </div>
             {% when "article_content" %}
@@ -57,7 +57,7 @@
                         </div>
                     {% endfor %}
                     <!--{% if paginate.pages > 1 %}
-                        {{ paginate |  default_pagination }}
+                        {{ paginate | default_pagination }}
                     {% endif %}-->
 
                     <div class="max-w-6xl mx-auto">
@@ -148,7 +148,7 @@
     "headline": {{ article.title | json }},
     "articleBody": {{ article.content | strip_html | json }},
     {% if article.excerpt != blank %}
-        "description": {{ article.excerpt |  strip_html | json }},
+        "description": {{ article.excerpt | strip_html | json }},
     {% endif %}
     {% if article.image %}
         "image": [
@@ -170,48 +170,47 @@
 
 {% schema %}
 {
-    "name": "Template Article",
-    "settings": [
-        {
-            "type": "checkbox",
-            "id": "author_enable",
-            "label": "Display Author Name",
-            "default": true
-        },
-        {
-            "type": "checkbox",
-            "id": "published_time_enable",
-            "label": "Display Published Time",
-            "default": true
-        }
-    ],
-    "blocks": [
-        {
-            "type": "article_title",
-            "name": "Title",
-            "limit": 1
-        },
-        {
-            "type": "article_content",
-            "name": "Article",
-            "limit": 1
-        },
-        {
-            "type": "article_author",
-            "name": "Author",
-            "limit": 1
-        },
-        {
-            "type": "date",
-            "name": "Date",
-            "limit": 2
-        },
-        {
-            "type": "article_img",
-            "name": "Image",
-            "limit": 1
-        }
-    ]
-
+  "name": "Template Article",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "author_enable",
+      "label": "Display Author Name",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "published_time_enable",
+      "label": "Display Published Time",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "article_title",
+      "name": "Title",
+      "limit": 1
+    },
+    {
+      "type": "article_content",
+      "name": "Article",
+      "limit": 1
+    },
+    {
+      "type": "article_author",
+      "name": "Author",
+      "limit": 1
+    },
+    {
+      "type": "date",
+      "name": "Date",
+      "limit": 2
+    },
+    {
+      "type": "article_img",
+      "name": "Image",
+      "limit": 1
+    }
+  ]
 }
 {% endschema %}

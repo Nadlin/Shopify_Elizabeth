@@ -19,11 +19,11 @@
                         {% if item.image %}
                             <img class="w-full h-full objext-center object-cover" src="{{ item.image | image_url: width: 300 }}" alt="{{ item.image.alt }}">
                         {% else %}
-                            {{'product-1' |  placeholder_svg_tag: 'w-full h-full objext-center object-cover'}}
+                            {{ 'product-1' | placeholder_svg_tag: 'w-full h-full objext-center object-cover' }}
                         {% endif %}
                     </div>
                     <div>
-                        <h1 class="text-xl font-medium mb-4">{{ item.title |  link_to: item.product.url }}</h1>
+                        <h1 class="text-xl font-medium mb-4">{{ item.title | link_to: item.product.url }}</h1>
                         <table class="table-auto w-full mb-4">
                             <tbody>
                                 <tr> 
@@ -40,7 +40,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <div class="text-gray-500 mb-4">{{ item.product.description |  truncatewords: 15 }}</div>
+                        <div class="text-gray-500 mb-4">{{ item.product.description | truncatewords: 15 }}</div>
                     </div>
                     <div>
                         <h1 class="font-medium mb-4">Delivery address</h1>
@@ -74,7 +74,7 @@
     <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-12 border border-gray-200 rounded-sm p-4 md:p-12 my-6 bg-gray-50">
         <div>
             <h1 class="font-medium mb-4">Billing adress</h1>
-            {{ order.billing_address |  format_address }}
+            {{ order.billing_address | format_address }}
         </div>
         <div>
             <h1 class="font-medium mb-4">Payment Information</h1>
