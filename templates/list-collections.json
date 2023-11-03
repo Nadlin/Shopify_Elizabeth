@@ -1,1 +1,9 @@
-null
+{
+    "sections": {
+        "template": {
+            "type": "template-list-collections"
+        }
+        
+    },
+    "order": ["template"]
+}

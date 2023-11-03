@@ -1,1 +1,24 @@
-null
+{
+  "sections": {
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "featured_title": "Featured Products",
+        "featured_collection": "all",
+        "product_limit": 8
+      }
+    },
+    "ccfdb82a-9753-49df-9fda-4340203f506c": {
+      "type": "featured-collection",
+      "settings": {
+        "featured_title": "Featured Products 2",
+        "featured_collection": "the-best",
+        "product_limit": 4
+      }
+    }
+  },
+  "order": [
+    "featured",
+    "ccfdb82a-9753-49df-9fda-4340203f506c"
+  ]
+}

@@ -13,8 +13,8 @@
                                     {% assign col_image = collection.products.first.featured_image %}
                                             
                                 {% endif %}
-                                <img src="{{ col_image | image_url: width: 400 }}" 
-                                        alt="{{ collection.title | escape }}" 
+                                <img src="{{ col_image |  image_url: width: 400 }}" 
+                                        alt="{{ collection.title |  escape }}" 
                                         width="{{ col_image.width }}" 
                                         height="{{ col_image.height }}"
                                         class="w-full h-full object-cover transition duration-1000 ease-in-out transform hover:scale-105" >
@@ -22,6 +22,7 @@
                         </a>
                         <div class="p-4 bg-gray-100"><h2 class="text-lg">{{ collection.title }}</h2></div>                   
                     </div>
+                    
                 </div>
             {% endif %}
         {% endfor %}
@@ -31,14 +32,14 @@
 
 {% schema %}
 {
-  "name": "Collections Template",
-  "settings": [
-    {
-      "type": "text",
-      "id": "collections_title",
-      "default": "Collections",
-      "label": "Title"
-    }
-  ]
+    "name": "Collections Template",
+    "settings": [
+        {
+            "type": "text",
+            "id": "collections_title",
+            "default": "Collections",
+            "label": "Title"
+        }
+    ]
 }
 {% endschema %}

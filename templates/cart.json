@@ -1,1 +1,30 @@
-null
+{
+  "sections": {
+    "template": {
+      "type": "template-cart",
+      "blocks": {
+        "btn_update": {
+          "type": "update_button",
+          "settings": {
+          }
+        },
+        "btn_checkout": {
+          "type": "checkout_button",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "btn_update",
+        "btn_checkout"
+      ],
+      "settings": {
+        "checkout_btn": "Go to Checkout",
+        "shopping_btn": "Continue Shopping"
+      }
+    }
+  },
+  "order": [
+    "template"
+  ]
+}
