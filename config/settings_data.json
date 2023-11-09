@@ -11,7 +11,15 @@
     },
     "content_for_index": [
 
-    ]
+    ],
+    "blocks": {
+      "15706726044914759919": {
+        "type": "shopify:\/\/apps\/free-shipping-popup\/blocks\/app-embed\/8e821184-1d16-4196-a877-d2413f0ab4a6",
+        "disabled": false,
+        "settings": {
+        }
+      }
+    }
   },
   "presets": {
     "Default": {
