@@ -1,5 +1,12 @@
 {
   "current": {
+    "checkout_header_image": "shopify:\/\/shop_images\/pexels-nathan-tran-16776159_1.jpg",
+    "checkout_logo_position": "left",
+    "checkout_body_background_image": "shopify:\/\/shop_images\/pexels-nathan-tran-16776159_1.jpg",
+    "checkout_input_background_color_mode": "transparent",
+    "checkout_sidebar_background_image": "shopify:\/\/shop_images\/pexels-jasmin-chew-16948299.jpg",
+    "checkout_accent_color": "#1eedb6",
+    "checkout_button_color": "#17b049",
     "sections": {
       "header": {
         "type": "header",
@@ -11,15 +18,7 @@
     },
     "content_for_index": [
 
-    ],
-    "blocks": {
-      "15706726044914759919": {
-        "type": "shopify:\/\/apps\/free-shipping-popup\/blocks\/app-embed\/8e821184-1d16-4196-a877-d2413f0ab4a6",
-        "disabled": false,
-        "settings": {
-        }
-      }
-    }
+    ]
   },
   "presets": {
     "Default": {
